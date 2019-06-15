@@ -145,6 +145,7 @@ export default {
       const questions = {
         name: params.name,
         title: parseInt(params.title),
+        image: parseInt(params.image),
         q1: parseInt(params.q1),
         q2: parseInt(params.q2),
         q3: parseInt(params.q3),
@@ -152,10 +153,11 @@ export default {
         q5: parseInt(params.q5),
         q6: parseInt(params.q6),
         q7: parseInt(params.q7),
-        q8: parseInt(params.q8)
+        q8: parseInt(params.q8),
+        q9: parseInt(params.q9)
       }
       this.questions = questions
-      this.step = 9
+      this.step = 10
     }
   },
   methods: {

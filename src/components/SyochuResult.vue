@@ -21,6 +21,15 @@
       </div>
       <img src="@/assets/hagaki_btm.gif" alt>
     </div>
+    <template v-if="step >= 9">
+      <p class="syochu-result_build">
+        <button type="button" @click="handleClickRestart">もう一度つくる</button>
+      </p>
+      <p class="syochu-result_share">
+        <input type="text" class="syochu-result_shareurl" readonly :value="shareUrl">
+        <a target="_blank" :href="twitterUrl">つぶやく</a>
+      </p>
+    </template>
   </div>
 </template>
 
@@ -43,6 +52,20 @@ export default {
           require('@/assets/y1304.gif'),
           require('@/assets/y1305.gif')
       ]
+    },
+    shareUrl() {
+      const shareData = {
+        ...this.questions,
+        share: 1
+      }
+      return `https://dailyportalz.jp/kiji/kaze-mail-generator?${stringify(
+        shareData
+      )}`
+    },
+    twitterUrl() {
+      return `https://twitter.com/intent/tweet?text=風邪でお休みメールジェネレーター&url=${encodeURIComponent(
+        this.shareUrl
+      )}`
     },
     resultsList() {
       return [
@@ -119,6 +142,7 @@ img {
 }
 .syochu-result_main {
   font-size: 0;
+  margin: 0 auto;
 }
 .syochu-result__message {
   padding: 16px;
